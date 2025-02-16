@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
 @plugin "tailwindcss-animate";
 
 :root {
@@ -31,7 +33,6 @@
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
 }
-
 
 @theme inline {
   /* Colors */
@@ -92,5 +93,14 @@ body {
   scrollbar-color: transparent transparent;
   &:hover {
     scrollbar-color: var(--primary) var(--brand-color);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
