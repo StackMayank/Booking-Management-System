@@ -51,7 +51,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-foreground: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -78,7 +78,7 @@
 }
 
 * {
-  @apply border-border outline-ring/50;
+  @apply  outline-ring/50;
 }
 body {
   @apply bg-background text-foreground font-sans;
