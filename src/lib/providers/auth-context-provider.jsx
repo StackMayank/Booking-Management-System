@@ -14,7 +14,7 @@ const AuthContextProvider = ({children}) => {
     isAuthenticated: false,
   });
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetchQuery } = useQuery({
     url: API_CONFIG.USER.PROFILE,
   });
 
@@ -30,7 +30,8 @@ const AuthContextProvider = ({children}) => {
   return (
     <AuthContext value={{
       authenticatedUser, 
-      setAuthenticatedUser
+      setAuthenticatedUser,
+      refetchCurrentUser: refetchQuery
     }}>
       {children}
     </AuthContext>

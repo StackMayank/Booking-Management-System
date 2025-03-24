@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AUTH_TOKEN_KEY, setStorageItem } from '@/lib/storage-manager';
+import { useAuthContext } from '@/lib/providers/auth-context-provider';
 
 const useSignInForm = () => {
   const navigate = useNavigate();
+  const { refetchCurrentUser } = useAuthContext();
 
   const { pending, mutate } = useMutation(API_CONFIG.AUTH.SIGN_IN, 'POST');
 
@@ -29,6 +31,7 @@ const useSignInForm = () => {
           type: 'success',
         });
         setStorageItem(AUTH_TOKEN_KEY, response.data.accessToken);
+        refetchCurrentUser();
         navigate(PATHS.LANDING);
       },
       onError: (err) => {

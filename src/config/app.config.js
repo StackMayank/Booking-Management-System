@@ -134,12 +134,13 @@ export const DESTINATIONS = [
   { city: 'Pune', country: 'India' }
 ];
 
+export const SEARCH_RESULT_PAGE_LIMIT = 2;
 
 export const SEARCH_PARAMS_KEYS = {
-  CHECKIN: 'checkin',
-  CHECKOUT: 'checkout',
-  ROOMS: 'rooms',
-  LOCATION: 'location',
+  CHECKIN: 'startDate',
+  CHECKOUT: 'endDate',
+  ROOMS: 'roomsCount',
+  LOCATION: 'city',
   SELECTED_ROOM: 'selected_rcid',
   SORTBY: 'sort',
   PAGE: 'page',

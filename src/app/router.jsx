@@ -7,6 +7,7 @@ import SearchPage from './search';
 import HotelDetails from './hotel-details';
 import { SignInPage, SignUpPage } from './auth';
 import { PATHS } from '@/config/path.config';
+import WithSearchLayout from '@/components/layouts/with-search-layout';
 
 const Router = () => {
   return (
@@ -15,12 +16,13 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path={PATHS.SEARCH} element={<SearchPage />}/>
-        <Route path={PATHS.HOTEL} element={<HotelDetails />}/>
+        <Route element={<WithSearchLayout />}>
+          <Route path={PATHS.SEARCH} element={<SearchPage />} />
+          <Route path={PATHS.HOTEL} element={<HotelDetails />} />
+        </Route>
 
-        <Route path={PATHS.SIGN_IN} element={<SignInPage />}/>
-        <Route path={PATHS.SIGN_UP} element={<SignUpPage />}/>
-
+        <Route path={PATHS.SIGN_IN} element={<SignInPage />} />
+        <Route path={PATHS.SIGN_UP} element={<SignUpPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

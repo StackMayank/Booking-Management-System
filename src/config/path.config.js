@@ -5,8 +5,11 @@ const PATHS = {
   SIGN_IN: '/signin',
   SIGN_UP: '/signup',
 
-  HOTEL: '/hotel/:id',
-  SEARCH: 'SEARCH'
+  HOTEL: '/hotels/:id',
+  SEARCH: 'SEARCH',
+
+  PROFILE: '/me/profile',
+  BOOKING_HISTORY: '/me/booking-history'
 }
 
 export {PATHS};

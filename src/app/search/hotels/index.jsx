@@ -12,7 +12,6 @@ const Hotels = ({isLoading, data, error}) => {
 
   return (
     <div className="space-y-4">
-      <HotelCardSkeleton />
       {data.map((hotel) => (
         <HotelCard key={hotel.id} {...hotel} />
       ))}

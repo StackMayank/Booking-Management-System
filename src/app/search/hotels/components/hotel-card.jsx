@@ -1,5 +1,7 @@
 import Icon from '@/components/ui/icon';
 import React from 'react';
+import useHotelNavigation from '../hooks/use-hotel-navigation';
+import { Link } from 'react-router';
 
 const hotelInfo = {
   description:
@@ -35,7 +37,7 @@ const HotelImages = ({ photos }) => {
       </div>
       <div className="grid grid-cols-4 gap-1 w-60">
         {photos.slice(1).map((image, index) => (
-          <div className="relative overflow-hidden rounded-sm" key={image}>
+          <div className="relative overflow-hidden rounded-sm" key={index}>
             <img
               height={50}
               width={60}
@@ -57,7 +59,9 @@ const HotelImages = ({ photos }) => {
 };
 
 const HotelCard = ({ name, photos, city, id, amenities, price }) => {
+  const navigationUrl = useHotelNavigation(id);
   return (
+    <Link to={navigationUrl}>
     <article className="flex w-full transition-colors border rounded-lg hover:border-primary">
       <div className="flex flex-1 gap-4 p-4">
         <HotelImages photos={photos} />
@@ -124,6 +128,7 @@ const HotelCard = ({ name, photos, city, id, amenities, price }) => {
         </div>
       </div>
     </article>
+    </Link>
   );
 };
 
