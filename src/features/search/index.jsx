@@ -10,6 +10,8 @@ const Search = () => {
   
   const {form, searchSubmitHandler} = useSearchForm();
 
+  console.log('Search rerendering...')
+
   return (
     <section className="container">
       <Form {...form}>

@@ -10,7 +10,11 @@ function useGetHotels() {
   const [searchParams] = useSearchParams();
   const city = searchParams.get(SEARCH_PARAMS_KEYS.LOCATION);
 
-  const { data, isLoading, error } = useQuery({
+  const {
+    data,
+    pending,
+    error,
+  } = useQuery({
     url: API_CONFIG.HOTEL.BROWSE_HOTELS,
     options: {
       params: {
@@ -23,8 +27,8 @@ function useGetHotels() {
       },
     },
   });
-  
-  return { data, isLoading, error, city };
+
+  return { data, pending, error, city };
 }
 
 export default useGetHotels;

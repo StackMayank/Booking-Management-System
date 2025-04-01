@@ -10,14 +10,16 @@ export default function useSearchForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
+  console.log('searchParams from search', Object.fromEntries(searchParams.entries()));
+
   const form = useForm({
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
       city: searchParams.get(SEARCH_PARAMS_KEYS.LOCATION) || '',
       roomsCount: parseInt(searchParams.get(SEARCH_PARAMS_KEYS.ROOMS)) || 1,
       bookingDates: {
-        from: searchParams.get(SEARCH_PARAMS_KEYS.CHECKIN),
-        to: searchParams.get(SEARCH_PARAMS_KEYS.CHECKOUT),
+        from: dayjs(searchParams.get(SEARCH_PARAMS_KEYS.CHECKIN)).toDate(),
+        to: dayjs(searchParams.get(SEARCH_PARAMS_KEYS.CHECKOUT)).toDate(),
       },
     },
   });

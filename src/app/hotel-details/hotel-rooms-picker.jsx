@@ -1,8 +1,18 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
-import React from 'react';
+import { SEARCH_PARAMS_KEYS } from '@/config/app.config';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router';
 
 const Room = ({ id, type, amenities, price, isSelected, photos }) => {
+
+  const [searchParams, setSearchParams] = useSearchParams(); 
+
+  const roomSelectHandler = () => {
+    searchParams.set(SEARCH_PARAMS_KEYS.SELECTED_ROOM, id);
+    setSearchParams(searchParams, {replace: true});
+  }
+
   return (
     <article>
       {isSelected && (
@@ -62,6 +72,7 @@ const Room = ({ id, type, amenities, price, isSelected, photos }) => {
         </div>
         <Button
           disabled={isSelected}
+          onClick={roomSelectHandler}
           variant="outline"
           size="lg"
           className={`cursor-pointer h-12 font-semibold gap-1 w-[180px] disabled:opacity-80 uppercase ${
@@ -79,12 +90,24 @@ const Room = ({ id, type, amenities, price, isSelected, photos }) => {
 };
 
 const HotelRoomPicker = ({ rooms }) => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectedRoomId = Number(searchParams.get(SEARCH_PARAMS_KEYS.SELECTED_ROOM));
+
+  useEffect(() => {
+    if(!rooms.find(item => item.id === selectedRoomId)) {
+      searchParams.set(SEARCH_PARAMS_KEYS.SELECTED_ROOM, rooms[0].id);
+      setSearchParams(searchParams, {replace: true});
+    }
+  }, [])
+
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-bold">Choose your room</h2>
       <div className="space-y-4">
         {rooms.map((room) => (
-          <Room {...room} key={room.id} />
+          <Room {...room} key={room.id} isSelected={selectedRoomId === room.id} />
         ))}
       </div>
     </section>

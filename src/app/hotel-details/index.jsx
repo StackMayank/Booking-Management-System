@@ -8,15 +8,15 @@ import { HOTEL_DATA, HOTEL_INFO } from './hotel-details-dummy-data';
 import useGetHotelInfo from './hooks/use-get-hotel-details';
 
 const HotelDetails = () => {
-  const { data: hotelData, isLoading, error } = useGetHotelInfo();
+  const { data: hotelData, pending, error } = useGetHotelInfo();
 
-  console.log(hotelData);
+  console.log(pending, hotelData);
 
   const hotelInfo = HOTEL_INFO;
 
-  if (isLoading) return <p>Loading...</p>;
+  if (pending) return <p>Loading...</p>;
 
-  if(error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="container mt-6 mb-12">

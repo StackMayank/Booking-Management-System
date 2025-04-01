@@ -7,11 +7,13 @@ import useQuery from '@/lib/hooks/useQuery';
 import { useParams, useSearchParams } from 'react-router';
 
 function useGetHotelInfo() {
-
   const { id } = useParams();
   const [searchParams] = useSearchParams();
-  
-  const { data, isLoading, error } = useQuery({
+
+  console.log('Hotel ID:', id); // Debug hotel ID
+  console.log('Search Params:', Object.fromEntries(searchParams)); // Debug search params
+
+  const { data, pending, error } = useQuery({
     url: API_CONFIG.HOTEL.HOTEL_INFO.URL(id),
     options: {
       params: {
@@ -24,7 +26,7 @@ function useGetHotelInfo() {
       },
     },
   });
-  return { data, isLoading, error };
+  return { data, pending, error };
 }
 
 export default useGetHotelInfo;

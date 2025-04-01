@@ -7,7 +7,7 @@ import useGetHotels from './hotels/hooks/use-get-hotels';
 import { SEARCH_RESULT_PAGE_LIMIT } from '@/config/app.config';
 
 const SearchPage = () => {
-  const { data, isLoading, error, city } = useGetHotels();
+  const { data, pending, error, city } = useGetHotels();
   const hotels = data?.content || []
   const totalEntries = data?.totalElements;
 
@@ -23,7 +23,7 @@ const SearchPage = () => {
           </h1>
           <SortFilter />
         </div>
-        <Hotels error={error} isLoading={isLoading} data={hotels} />
+        <Hotels error={error} isLoading={pending} data={hotels} />
         {hotels.length > 0 && (
           <PaginationFilter
             totalEntries={totalEntries}

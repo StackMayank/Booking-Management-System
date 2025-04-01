@@ -8,6 +8,8 @@ import HotelDetails from './hotel-details';
 import { SignInPage, SignUpPage } from './auth';
 import { PATHS } from '@/config/path.config';
 import WithSearchLayout from '@/components/layouts/with-search-layout';
+import CheckoutPage from './checkout';
+import { WithAuthProvider } from '@/lib/providers/auth-context-provider';
 
 const Router = () => {
   return (
@@ -23,6 +25,10 @@ const Router = () => {
 
         <Route path={PATHS.SIGN_IN} element={<SignInPage />} />
         <Route path={PATHS.SIGN_UP} element={<SignUpPage />} />
+
+        <Route element={<WithAuthProvider />}>
+          <Route path={PATHS.CHECKOUT} element={<CheckoutPage />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
