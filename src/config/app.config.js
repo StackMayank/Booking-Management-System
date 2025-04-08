@@ -222,3 +222,7 @@ export const PRICE_FILTERS = [
     value: '2000-2500',
   },
 ];
+export const ERROR_FALLBACK = {
+  TITLE: 'Internal Server Error',
+  DESCRIPTION: 'Something went wrong. Please try again later.',
+};

@@ -22,17 +22,36 @@ const API_CONFIG = {
       METHOD: 'POST',
       URL: (bookingId) => `/bookings/${bookingId}/addGuests`,
     },
+    REMOVE_GUEST: {
+      METHOD: 'POST',
+      URL: (bookingId) => `/bookings/${bookingId}/removeGuests`,
+    },
     PAYMENT_BOOKING: {
       METHOD: 'POST',
       URL: (bookingId) => `/bookings/${bookingId}/payments`,
     },
     STATUS_BOOKING: {
       METHOD: 'GET',
-      URL: (bookingId) => `/bookings/${bookingId}/status`,
+      URL: (bookingId) => `/bookings/${bookingId}`,
     },
     CANCEL_BOOKING: {
       METHOD: 'POST',
       URL: (bookingId) => `/bookings/${bookingId}/cancel`,
+    },
+  },
+  TRAVELLER: {
+    GET_TRAVELLERS: '/users/guests',
+    ADD_TRAVELLER: {
+      METHOD: 'POST',
+      URL: '/users/guests',
+    },
+    UPDATE_TRAVELLER: {
+      METHOD: 'PUT',
+      URL: (guestId) => `/users/guests/${guestId}`,
+    },
+    DELETE_TRAVELLER: {
+      METHOD: 'DELETE',
+      URL: (guestId) => `/users/guests/${guestId}`,
     },
   },
 };
