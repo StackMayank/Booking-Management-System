@@ -1,77 +1,91 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import useQuery from '../hooks/useQuery';
 import API_CONFIG from '@/config/api.config';
+import { PATHS } from '@/config/path.config';
+import { getEncodedRedirectUrl } from '@/lib/utils';
+import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router';
-import { getEncodedRedirectUrl } from '../utils';
-import { AUTH_TOKEN_KEY, getStorageItem } from '../storage-manager';
+import useQuery from '../hooks/useQuery';
 
-const AuthContext = createContext({
+const AuthContext = React.createContext({
   isAuthenticated: false,
   setIsAuthenticated: () => {},
 });
 
 const WithAuthProvider = () => {
   const location = useLocation();
-  const { authenticatedUser } = useAuthContext();
+  const { authenticatedUser, authChecked } = useAuthContext();
 
-  console.log('authenticatedUser in authProvider hook', authenticatedUser)
+  if (!authChecked) {
+    return <p>Loading...</p>;
+  }
 
   if (!authenticatedUser.isAuthenticated) {
     const redirectUrl = `${location.pathname}${location.search}`;
-
     return (
-      <Navigate to={`/signin?${getEncodedRedirectUrl(redirectUrl)}`} replace />
+      <Navigate
+        to={`${PATHS.SIGN_IN}?${getEncodedRedirectUrl(redirectUrl)}`}
+        replace
+      />
     );
   }
 
-  return <Outlet />
+  return <Outlet />;
 };
 
 const AuthContextProvider = ({ children }) => {
-  const [authenticatedUser, setAuthenticatedUser] = useState({
+  const [authenticatedUser, setAuthenticatedUser] = React.useState({
+    isAuthenticated: false,
     user: null,
-    isAuthenticated: getStorageItem(AUTH_TOKEN_KEY) ? true : false,
   });
+  const [authChecked, setAuthChecked] = React.useState(false);
 
-  const { data, pending, refetchQuery } = useQuery({
+  const {
+    data,
+    error,
+    pending,
+    refetch: refetchCurrentUser,
+  } = useQuery({
     url: API_CONFIG.USER.PROFILE,
   });
 
-  useEffect(() => {
-    if(data) {
-      setAuthenticatedUser({
-        isAuthenticated: true,
-        user: data,
-      });
+  React.useEffect(() => {
+    if (data) {
+      setAuthenticatedUser({ isAuthenticated: true, user: data });
+      setAuthChecked(true);
+    } else if (error) {
+      setAuthenticatedUser({ isAuthenticated: false, user: null });
+      setAuthChecked(true);
     }
-  }, [data]);
+  }, [data, error]);
 
-  if (pending) return <p>Loading....</p>;
+  const contextValue = React.useMemo(
+    () => ({
+      authenticatedUser,
+      setAuthenticatedUser,
+      refetchCurrentUser,
+      authChecked,
+    }),
+    [
+      authenticatedUser,
+      setAuthenticatedUser,
+      refetchCurrentUser,
+      authChecked,
+    ]
+  );
 
   return (
-    <AuthContext
-      value={{
-        authenticatedUser,
-        setAuthenticatedUser,
-        refetchCurrentUser: refetchQuery,
-      }}
-    >
-      {children}
-    </AuthContext>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 
-const useAuthContext = () => {
-  const context = useContext(AuthContext);
-
+function useAuthContext() {
+  const context = React.useContext(AuthContext);
   if (!context) {
     throw new Error(
-      'userAuthContext must be used within the AuthContextProvider'
+      'useAuthContext must be used within an AuthContextProvider'
     );
   }
-
   return context;
-};
+}
 
 export { useAuthContext, WithAuthProvider };
 export default AuthContextProvider;

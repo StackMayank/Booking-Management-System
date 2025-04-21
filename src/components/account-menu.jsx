@@ -13,6 +13,7 @@ import Icon from './ui/icon';
 import { PATHS } from '@/config/path.config';
 import { LinkWithIcon } from './ui/link';
 import useLogoutHandler from '@/app/auth/hooks/use-logout';
+import { getDefaultProfile } from '@/lib/utils';
 
 const AccountMenu = ({ user }) => {
   const { logoutHandler, pending } = useLogoutHandler();
@@ -22,7 +23,7 @@ const AccountMenu = ({ user }) => {
       <DropdownMenuTrigger asChild>
         <Avatar>
           <AvatarImage
-            src={`https://api.dicebear.com/9.x/dylan/svg?seed=${user.name}`}
+            src={getDefaultProfile(user.name)}
             alt={`Profile image for ${user.name}`}
           />
           <AvatarFallback>{user.name}</AvatarFallback>

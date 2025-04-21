@@ -12,6 +12,7 @@ const API_CONFIG = {
   },
   USER: {
     PROFILE: '/users/profile',
+    BOOKING_HISTORY: '/users/myBookings',
   },
   BOOKING: {
     INIT_BOOKING: {

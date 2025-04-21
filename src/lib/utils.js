@@ -15,3 +15,7 @@ export const getEncodedRedirectUrl = (next) => {
     next || '/'
   )}`;
 };
+
+export function getDefaultProfile(initials) {
+  return `https://api.dicebear.com/9.x/initials/svg?seed=${initials}`;
+}

@@ -24,7 +24,7 @@ const AddNewTraveler = () => {
           className="h-auto gap-1 p-0 text-sm font-semibold transition-opacity hover:opacity-80 hover:no-underline"
         >
           <Icon icon={'plus'} size={16} />
-          Add New Guest
+          Add New Traveler
         </Button>
       }
     />

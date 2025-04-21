@@ -9,14 +9,7 @@ export default function useQuery({ url, options = {} }) {
   });
 
   async function fetchData() {
-    setQueryState({
-      data: null,
-      pending: true,
-      error: null,
-    });
-
     try {
-      // await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await axiosInstance(url, options);
       setQueryState({
         data: response.data,
@@ -37,7 +30,6 @@ export default function useQuery({ url, options = {} }) {
   }
 
   useEffect(() => {
-    // for the first time
     fetchData();
   }, [url, JSON.stringify(options)]);
 

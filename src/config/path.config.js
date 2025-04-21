@@ -12,7 +12,13 @@ const PATHS = {
   BOOKING_HISTORY: '/me/booking-history',
 
   CHECKOUT: '/hotels/:id/checkout',
-  PAYMENTS_STATUS: '/payments/:bookingId/status'
+  PAYMENTS_STATUS: '/payments/:bookingId/status',
+
+  SETTINGS: {
+    PROFILE: '/me/profile',
+    BOOKING_HISTORY: '/me/booking-history',
+    TRAVELERS_MANAGEMENT: '/me/travelers',
+  }
 }
 
 export {PATHS};

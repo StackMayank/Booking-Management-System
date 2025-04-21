@@ -33,7 +33,6 @@ const InputDOB = (props) => {
         />
       </InputOTPGroup>
       <InputOTPSeparator
-        customSeparator="/"
         className="text-muted-foreground"
       />
       <InputOTPGroup className="gap-1">
@@ -49,7 +48,6 @@ const InputDOB = (props) => {
         />
       </InputOTPGroup>
       <InputOTPSeparator
-        customSeparator="/"
         className="text-muted-foreground"
       />
       <InputOTPGroup className="gap-1">

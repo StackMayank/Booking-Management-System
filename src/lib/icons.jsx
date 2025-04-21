@@ -1,4 +1,4 @@
-import { Bed, CalendarClock, CalendarDays, CalendarSearchIcon, CarFront, CarTaxiFront, Check, ChevronDown, CircleCheck, Eye, FerrisWheel, Gem, Heart, Info, LogOutIcon, MapPin, Mars, Minus, Plane, Plus, ShieldCheck, Star, User2, Venus, X, Zap } from "lucide-react";
+import { Bed, CalendarClock, CalendarDays, CalendarSearchIcon, CarFront, CarTaxiFront, Check, ChevronDown, CircleCheck, DoorOpen, Dot, EllipsisVertical, Eye, FerrisWheel, Gem, Heart, Info, LogOutIcon, MapPin, Mars, Minus, Pen, Plane, Plus, Save, ShieldCheck, Star, User2, Users, Venus, X, Zap } from "lucide-react";
 
 export default {
   bed: Bed,
@@ -88,5 +88,11 @@ export default {
   logout: LogOutIcon,
   shield: ShieldCheck,
   male: Mars,
-  female: Venus
+  female: Venus,
+  pen: Pen,
+  travelers: Users,
+  save: Save,
+  dot: Dot,
+  room: DoorOpen,
+  more: EllipsisVertical
 };
