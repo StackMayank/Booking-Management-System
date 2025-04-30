@@ -13,10 +13,11 @@ import Icon from './ui/icon';
 import { PATHS } from '@/config/path.config';
 import { LinkWithIcon } from './ui/link';
 import useLogoutHandler from '@/app/auth/hooks/use-logout';
-import { getDefaultProfile } from '@/lib/utils';
+import { getDefaultProfile, isAdmin } from '@/lib/utils';
 
 const AccountMenu = ({ user }) => {
   const { logoutHandler, pending } = useLogoutHandler();
+  const isAdmin2 = isAdmin(user);
 
   return (
     <DropdownMenu>
@@ -50,6 +51,24 @@ const AccountMenu = ({ user }) => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="my-3" />
+        {isAdmin2 && (
+          <DropdownMenuItem>
+            <Button
+              asChild
+              variant="ghost"
+              className="w-full flex justify-start"
+            >
+              <Link
+                to={PATHS.ADMIN.LIST_HOTELS}
+                className="flex items-center justify-start gap-2"
+              >
+                <Icon icon="dashboard" size={20} />
+                <span>Admin Dashboard</span>
+              </Link>
+            </Button>
+          </DropdownMenuItem>
+        )}
+
         <DropdownMenuItem>
           <Button asChild variant="ghost" className="w-full flex justify-start">
             <Link

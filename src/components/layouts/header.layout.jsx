@@ -6,7 +6,7 @@ import { PATHS } from '@/config/path.config';
 import { useAuthContext } from '@/lib/providers/auth-context-provider';
 import AccountMenu from '../account-menu';
 
-const Header = () => {
+const Header = ({ showServiceList = true }) => {
   const { authenticatedUser } = useAuthContext();
 
   return (
@@ -43,20 +43,22 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className="container flex gap-1 overflow-x-auto scrollbar">
-        {SERVICE_LIST.map((item) => (
-          <Button
-            key={item.id}
-            className={`bg-transparent shadow-none font-normal rounded-full hover:bg-white/10
+      {showServiceList && (
+        <div className="container flex gap-1 overflow-x-auto scrollbar">
+          {SERVICE_LIST.map((item) => (
+            <Button
+              key={item.id}
+              className={`bg-transparent shadow-none font-normal rounded-full hover:bg-white/10
           cursor-pointer flex items-center justify-between gap-2 px-6 h-11 ${
             item.active && 'border border-white bg-white/10'
           }`}
-          >
-            <Icon icon={item.icon} />
-            {item.title}
-          </Button>
-        ))}
-      </div>
+            >
+              <Icon icon={item.icon} />
+              {item.title}
+            </Button>
+          ))}
+        </div>
+      )}
     </header>
   );
 };

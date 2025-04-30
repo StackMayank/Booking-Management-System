@@ -18,6 +18,22 @@ const PATHS = {
     PROFILE: '/me/profile',
     BOOKING_HISTORY: '/me/booking-history',
     TRAVELERS_MANAGEMENT: '/me/travelers',
+  },
+  ADMIN: {
+    LIST_HOTELS: '/admin',
+    CREATE_HOTEL: 'hotels/create',
+    DASHBOARD: {
+      ROOT: '/admin/hotels/:hotelId',
+      OVERVIEW: 'overview',
+      EDIT_HOTEL: 'edit',
+      BOOKINGS: 'bookings',
+      ROOMS: {
+        ROOT: 'rooms',
+        INVENTORY: 'rooms/:roomId/inventory',
+        EDIT_ROOM: 'rooms/:roomId/edit',
+        CREATE: 'rooms/create'
+      }
+    }
   }
 }
 

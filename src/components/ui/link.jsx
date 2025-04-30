@@ -7,7 +7,7 @@ const LinkWithIcon = ({variant, className, icon, to, children, ...props}) => {
     <Button asChild variant={variant} className={className} {...props}>
       <Link
         to={to}
-        className="flex items-center justify-start gap-2"
+        className="flex items-center gap-2"
       >
         <Icon icon={icon} size={20} />
         {children}

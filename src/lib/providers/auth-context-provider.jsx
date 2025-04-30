@@ -42,7 +42,7 @@ const AuthContextProvider = ({ children }) => {
     data,
     error,
     pending,
-    refetch: refetchCurrentUser,
+    refetchQuery: refetchCurrentUser,
   } = useQuery({
     url: API_CONFIG.USER.PROFILE,
   });
@@ -57,20 +57,12 @@ const AuthContextProvider = ({ children }) => {
     }
   }, [data, error]);
 
-  const contextValue = React.useMemo(
-    () => ({
-      authenticatedUser,
-      setAuthenticatedUser,
-      refetchCurrentUser,
-      authChecked,
-    }),
-    [
-      authenticatedUser,
-      setAuthenticatedUser,
-      refetchCurrentUser,
-      authChecked,
-    ]
-  );
+  const contextValue = {
+    authenticatedUser,
+    setAuthenticatedUser,
+    refetchCurrentUser,
+    authChecked,
+  };
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
