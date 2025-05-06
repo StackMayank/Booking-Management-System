@@ -6,7 +6,7 @@ const Admin = () => {
   return (
     <div>
       <Header showServiceList={false} />
-      <main>
+      <main className='py-4'>
         <Outlet />
       </main>
     </div>
