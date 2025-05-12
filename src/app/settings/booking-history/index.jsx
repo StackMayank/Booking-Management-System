@@ -1,13 +1,19 @@
-import React from 'react'
+import React from 'react';
 import { Separator } from '@/components/ui/separator';
 import useGetBookingHistory from './use-get-booking-history';
 import BookingCard from './booking-card';
+import ApiError from '@/components/api-error';
+import { LoadingSpinner } from '@/components/ui/loader';
 
 const BookingHistory = () => {
+  const { data, error, pending } = useGetBookingHistory();
 
-  const {data, error, pending} = useGetBookingHistory();
+  if (error) {
+    return <ApiError errorMessage={error} className="h-[calc(100vh-200px)]" />;
+  }
 
-  if(pending) return <p>Loading...</p>
+  if (pending)
+    return <LoadingSpinner containerClassName={'min-h-[calc(100vh-200px)]'} />;
 
   return (
     <section>
@@ -25,6 +31,6 @@ const BookingHistory = () => {
       </div>
     </section>
   );
-}
+};
 
-export default BookingHistory
+export default BookingHistory;

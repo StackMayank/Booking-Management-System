@@ -15,7 +15,7 @@ const LoadingBar = ({ className, ...props }) => {
 };
 const AppLoader = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center absolute inset-0 bg-white z-10">
       <div className="flex flex-col items-center w-full gap-8 max-w-52">
         <img
           width={85}

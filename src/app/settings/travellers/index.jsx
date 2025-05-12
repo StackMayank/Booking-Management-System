@@ -5,11 +5,18 @@ import AddNewTraveler from '@/app/checkout/guests/add-new-traveler-dialog';
 import TravelerContextProvider, {
   useTravelerContext,
 } from '@/lib/providers/travelers-context';
+import ApiError from '@/components/api-error';
+import { LoadingSpinner } from '@/components/ui/loader';
 
 const TravelersManagement = () => {
-  const { travelers, pending } = useTravelerContext();
+  const { travelers, pending, error } = useTravelerContext();
 
-  if (pending) return <p>Loading...</p>;
+   if (error) {
+     return <ApiError errorMessage={error} className="h-[calc(100vh-200px)]" />;
+   }
+
+   if (pending)
+     return <LoadingSpinner containerClassName={'min-h-[calc(100vh-200px)]'} />;
 
   return (
     <section>

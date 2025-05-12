@@ -6,6 +6,7 @@ import HotelPolicy from './hotel-policy';
 import { HotelCheckoutCard } from './hotel-checkout-card';
 import { HOTEL_DATA, HOTEL_INFO } from './hotel-details-dummy-data';
 import useGetHotelInfo from './hooks/use-get-hotel-details';
+import { LoadingSpinner } from '@/components/ui/loader';
 
 const HotelDetails = () => {
   const { data: hotelData, pending, error } = useGetHotelInfo();
@@ -14,7 +15,8 @@ const HotelDetails = () => {
 
   const hotelInfo = HOTEL_INFO;
 
-  if (pending) return <p>Loading...</p>;
+  if (pending)
+    return <LoadingSpinner containerClassName={'min-h-[calc(100vh-200px)]'} />;
 
   if (error) return <p>Error: {error.message}</p>;
 

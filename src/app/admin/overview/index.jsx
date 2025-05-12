@@ -10,8 +10,6 @@ const Overview = () => {
 
   if (isLoading) return <LoadingSpinner containerClassName={"min-h-[calc(100vh-56px)]"} />
 
-  console.log("hotel is", hotel)
-
   return (
     <div className="container p-4 max-w-[1536px] space-y-8">
       <HotelMetaInfo

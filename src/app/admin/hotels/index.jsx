@@ -2,6 +2,7 @@ import useQuery from '@/lib/hooks/useQuery';
 import React from 'react';
 import EmptyHotels from './empty-hotels';
 import { LinkWithIcon } from '@/components/ui/link';
+import { LoadingSpinner } from '@/components/ui/loader';
 
 const HotelCard = ({ photos, name, contactInfo, id }) => {
   return (
@@ -36,7 +37,8 @@ const HotelCard = ({ photos, name, contactInfo, id }) => {
 const Hotels = () => {
   const { data, pending, error } = useQuery({ url: '/admin/hotels' });
 
-  if (pending) return <p>Loading...</p>;
+  if (pending)
+    return <LoadingSpinner containerClassName={'min-h-[calc(100vh-120px)]'} />;
 
   return (
     <div className="container">
