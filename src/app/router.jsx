@@ -27,6 +27,7 @@ import Rooms from './admin/rooms';
 import EditHotel from './admin/edit-hotel';
 import CreateRoom from './admin/create-room';
 import EditRoom from './admin/edit-room';
+import Inventory from './admin/inventory';
 
 const Router = () => {
   return (
@@ -93,6 +94,10 @@ const Router = () => {
               <Route
                 path={PATHS.ADMIN.DASHBOARD.ROOMS.EDIT_ROOM}
                 element={<EditRoom />}
+              />
+              <Route
+                path={PATHS.ADMIN.DASHBOARD.ROOMS.INVENTORY}
+                element={<Inventory />}
               />
               <Route
                 path={PATHS.ADMIN.DASHBOARD.EDIT_HOTEL}
