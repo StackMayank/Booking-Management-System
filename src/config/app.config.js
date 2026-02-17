@@ -2,76 +2,76 @@ import Icons from "@/lib/icons";
 
 
 export const SERVICE_LIST = [
-    {
-        id: 1,
-        Title: "Stays",
-        icon: Icons.bed,
-        link: "/hotels",
-        active: true
-    },
-    {
-        id: 2,
-        Title: "Flights",
-        icon: Icons.flight,
-        link: "/flights"
-    },
-    {
-        id: 3,
-        Title: "Cars",
-        icon: Icons.car,
-        link: "/cars"
-    },
-    {
-        id: 4,
-        Title: "Tours",
-        icon: Icons.tours,
-        link: "/tours"
-    },
-    {
-        id: 5,
-        Title: "Attractions",
-        icon: Icons.attraction,
-        link: "/attractions"
-    },
-    {
-        id: 6,
-        Title: "Restaurants",
-        icon: Icons.resturant,
-        link: "/restaurants"
-    }
+  {
+    id: 1,
+    Title: "Stays",
+    icon: Icons.bed,
+    link: "/hotels",
+    active: true
+  },
+  {
+    id: 2,
+    Title: "Flights",
+    icon: Icons.flight,
+    link: "/flights"
+  },
+  {
+    id: 3,
+    Title: "Cars",
+    icon: Icons.car,
+    link: "/cars"
+  },
+  {
+    id: 4,
+    Title: "Tours",
+    icon: Icons.tours,
+    link: "/tours"
+  },
+  {
+    id: 5,
+    Title: "Attractions",
+    icon: Icons.attraction,
+    link: "/attractions"
+  },
+  {
+    id: 6,
+    Title: "Restaurants",
+    icon: Icons.resturant,
+    link: "/restaurants"
+  }
 ]
 
 export const TRENDING_DESTINATION = [
-    {
-        id: 1,
-        Title: "New Delhi",
-        image: "delhi.jpg",
-        className: "sm:col-span-3 sm:col-start-1 col-span-full"
-    },
-    {
-        id: 2,
-        Title: "Bangalore",
-        image: "bangalore.jpg",
-        className: "sm:col-span-3 sm:col-start-4 col-span-full"
-    },
-    {
-        id: 3,
-        Title: "Mumbai",
-        image: "mumbai.jpg",
-        className: "md:col-span-2 md:col-start-1 col-span-full"
-    },
-    {
-        id: 4,
-        Title: "Chennai",
-        image: "chennai.jpg",
-        className: "md:col-span-2 md:col-start-3 sm:col-span-3 sm:col-start-4 col-span-full"
-    },
-    {
-        id: 5,
-        Title: "Hyderabad",
-        image: "hyderabad.jpg",
-        className: "md:col-span-2 md:col-start-5 sm:col-span-3 sm:col-start-4 col-span-full"
-    }
+  {
+    id: 1,
+    Title: "New Delhi",
+    image: "Delhi.jpg.webp",
+    className: "sm:col-span-3 sm:col-start-1 col-span-full"
+  },
+  {
+    id: 2,
+    Title: "Bangalore",
+    image: "Bangalore.jpg.jpg",
+    className: "sm:col-span-3 sm:col-start-4 col-span-full"
+  },
+  {
+    id: 3,
+    Title: "Mumbai",
+    image: "Mumbai.jpg.jpg",
+    className: "md:col-span-2 md:col-start-1 col-span-full"
+  },
+  {
+    id: 4,
+    Title: "Chennai",
+    image: "chennai.jpg.jpg",
+    className: "md:col-span-2 md:col-start-3 sm:col-span-3 sm:col-start-4 col-span-full"
+  },
+  {
+    id: 5,
+    Title: "Hyderabad",
+    image: "Hyderbad.jpg.jpg",
+    className: "md:col-span-2 md:col-start-5 sm:col-span-3 sm:col-start-4 col-span-full"
+  }
 ]
 
 

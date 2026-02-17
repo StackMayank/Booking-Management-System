@@ -1,6 +1,8 @@
 import React from 'react'
 import { FOOTER_SECTION, SOCIAL_LINKS } from '@/config/app.config'
-import Icons from '@/lib/icons'
+import Icon from '../ui/icon';
+
+
 const Footer = () => {
   return (
     <div className='bg-secondary mt-16 border-t'>
@@ -19,16 +21,31 @@ const Footer = () => {
                       {link.text}
                     </a>
                   </li>
+
                 ))}
               </ul>
             </div>
           ))}
         </div>
       </footer>
-     
+      <div className='bg-brand py-2' >
+        <div className='container flex items-center justify-between'>
+          <div className='flex items-center gap-4 text-white'>
+            {SOCIAL_LINKS.map((link, index)=> (
+              <a href={link.href} key={index}>
+                <Icon icon={link.icon} size={18} />
+              </a>
+            ))}
+          </div>
+          <div className='text-sm text-white'>
+            <p>© {new Date().getFullYear()} Hotel Booking Platform. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
     </div>
        
   )
 }
+
 
 export default Footer
