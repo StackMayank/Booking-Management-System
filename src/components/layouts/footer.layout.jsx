@@ -25,7 +25,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-          ))}
+          ))}         
         </div>
       </footer>
       <div className='bg-brand py-2' >

@@ -6,7 +6,7 @@ const HeroSection = () => {
         <div>
             <section className='relative min-h-[372px] bg-black '>
                 <img src="https://images.pexels.com/photos/376368/pexels-photo-376368.jpeg" alt="hero-image" className='absolute z-1 size-full object-cover inset-0 brightness-75 ' />
-                <div className=' relative z-2 container top-5'>
+                <div className=' relative z-2 container top-5 space-y-2'>
                     <h1 className='text-4xl font-extrabold leading-tight text-white md:text-5xl'>
                         Travel has never <br />
                         felt this cosy</h1>
