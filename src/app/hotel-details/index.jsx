@@ -21,7 +21,7 @@ const hotelInfo = HOTEL_INFO
             <HotelPolicy policy={hotelInfo.hotelPolicy}/>
         </div>
         <aside className='w-[340px] p-4 shrink-0 border border-border shadow-md rounded-xl sticky top-6 h-min'>
-        <HotelCheckoutCard />
+        <HotelCheckoutCard rooms={hotelData.rooms} cancellationPolicy={hotelInfo.cancellationPolicy} />
         </aside>
         </div>
     </div>
