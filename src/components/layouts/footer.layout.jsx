@@ -3,14 +3,16 @@ import { FOOTER_SECTION, SOCIAL_LINKS } from '@/config/app.config'
 import Icon from '../ui/icon';
 
 
-const Footer = () => {
+const Footer = ({ variant = 'default' }) => {
   return (
-    <div className='bg-secondary mt-16 border-t'>
-      <footer className='container py-12'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12'>
+    <div className='mt-auto border-t'>
+      {variant !== 'minimal' && (
+        <footer className='bg-secondary container py-8 sm:py-12'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8'>
           {FOOTER_SECTION.map((section, index) => (
             <div key={index} className="flex flex-col gap-4">
               <h3 className='font-bold text-sm text-foreground'>{section.title}</h3>
+              
               <ul className='flex flex-col gap-1'>
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
@@ -28,7 +30,8 @@ const Footer = () => {
           ))}         
         </div>
       </footer>
-      <div className='bg-brand py-2' >
+      )}
+      <div className='bg-brand py-2 mt-auto'>
         <div className='container flex items-center justify-between'>
           <div className='flex items-center gap-4 text-white'>
             {SOCIAL_LINKS.map((link, index)=> (
