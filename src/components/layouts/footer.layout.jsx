@@ -5,31 +5,30 @@ import Icon from '../ui/icon';
 
 const Footer = ({ variant = 'default' }) => {
   return (
-    <div className='mt-auto border-t'>
+    <div className='mt-auto border-t bg-secondary'>
       {variant !== 'minimal' && (
-        <footer className='bg-secondary container py-8 sm:py-12'>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8'>
-          {FOOTER_SECTION.map((section, index) => (
-            <div key={index} className="flex flex-col gap-4">
-              <h3 className='font-bold text-sm text-foreground'>{section.title}</h3>
-              
-              <ul className='flex flex-col gap-1'>
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      className='text-xs text-neutral-600 hover:text-primary transition-colors hover:underline underline-offset-4'
-                    >
-                      {link.text}
-                    </a>
-                  </li>
-
-                ))}
-              </ul>
-            </div>
-          ))}         
-        </div>
-      </footer>
+        <footer className='container py-8 sm:py-12'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8'>
+            {FOOTER_SECTION.map((section, index) => (
+              <div key={index} className="flex flex-col gap-4">
+                <h3 className='font-bold text-sm text-foreground'>{section.title}</h3>
+                
+                <ul className='flex flex-col gap-1'>
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a
+                        href={link.href}
+                        className='text-xs text-neutral-600 hover:text-primary transition-colors hover:underline underline-offset-4'
+                      >
+                        {link.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </footer>
       )}
       <div className='bg-brand py-2 mt-auto'>
         <div className='container flex items-center justify-between'>

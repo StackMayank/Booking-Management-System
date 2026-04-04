@@ -11,12 +11,12 @@ const App = () => {
     <div className="flex flex-col min-h-screen bg-gray-50">
         <Header />
         <main className="flex-1 flex flex-col">
-          {/* <Home /> */}
+          <Home />
           {/* <HotelDetails /> */}
           {/* <SignInPage /> */}
-          <SignUpPage />
-        </main>
-        <Footer variant="minimal" />
+          {/* <SignUpPage /> */}
+        </main> 
+        <Footer variant="default" />
     </div>
   )
 }

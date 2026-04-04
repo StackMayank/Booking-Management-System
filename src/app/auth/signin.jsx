@@ -1,6 +1,9 @@
-import { useForm, Controller } from "react-hook-form"
+"use client"
+
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { useState } from "react"
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -12,14 +15,10 @@ import {
   FieldError,
 } from "@/components/ui/field"
 
+import Icon from "@/components/ui/icon"
 
+// ✅ Schema
 const formSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2, "Name must be at least 2 characters")
-    .max(50, "Name is too long"),
-
   email: z
     .string()
     .trim()
@@ -41,11 +40,20 @@ const formSchema = z.object({
 })
 
 export default function SigninPage() {
-  const form = useForm({
+  const [showPassword, setShowPassword] = useState(false)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
+      terms: false,
     },
   })
 
@@ -53,103 +61,101 @@ export default function SigninPage() {
     console.log("Form Data:", data)
   }
 
+  const termsValue = watch("terms")
+
   return (
     <>
-    <form
-      onSubmit={form.handleSubmit(onSubmit)}
-      className="space-y-5 w-full"
-    >
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5 w-full"
+      >
 
+        {/* EMAIL */}
+        <Field data-invalid={!!errors.email}>
+          <FieldLabel>Email</FieldLabel>
 
-      {/* EMAIL */}
-      <Controller
-        name="email"
-        control={form.control}
-        render={({ field, fieldState }) => (
-          <Field data-invalid={fieldState.invalid} >
-            <FieldLabel>Email</FieldLabel>
+          <Input
+            {...register("email")}
+            type="email"
+            placeholder="you@example.com"
+            className="h-10 rounded-lg"
+          />
 
+          {errors.email && (
+            <FieldError errors={[errors.email]} />
+          )}
+        </Field>
+
+        {/* PASSWORD */}
+        <Field data-invalid={!!errors.password}>
+          <FieldLabel>Password</FieldLabel>
+
+          <div className="relative flex items-center">
             <Input
-              {...field}
-              type="email"
-              placeholder="you@example.com"
-              className="h-10 rounded-lg"
-            />
-
-            {fieldState.error && (
-              <FieldError errors={[fieldState.error]} />
-            )}
-          </Field>
-        )}
-      />
-
-      {/* PASSWORD */}
-      <Controller
-        name="password"
-        control={form.control}
-        render={({ field, fieldState }) => (
-          <Field data-invalid={fieldState.invalid} >
-            <FieldLabel>Password</FieldLabel>
-
-            <Input
-              {...field}
-              type="password"
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
               placeholder="••••••"
               className="h-10 rounded-lg"
             />
 
-            {fieldState.error && (
-              <FieldError errors={[fieldState.error]} />
-            )}
-          </Field>
-        )}
-      />
-
-      {/* TERMS */}
-      <Controller
-        name="terms"
-        
-        control={form.control}
-        render={({ field, fieldState }) => (
-          <div >
-            <div className="flex items-start gap-3 ">
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-              />
-
-              <p className="text-sm text-gray-600 leading-none">
-                I accept terms & conditions
-              </p>
-            </div>
-
-            {fieldState.error && (
-              <p className="text-sm text-red-500">
-                {fieldState.error.message}
-              </p>
-            )}
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-2 top-1/2 -translate-y-1/2"
+            >
+              <Icon icon={showPassword ? "eyeclosed" : "eye"} />
+            </Button>
           </div>
-        )}
-      />
 
-      {/* BUTTON */}
-      <Button
-        type="submit"
-        className="w-full h-10 bg-brand hover:bg-brand/80"
-      >
-        Create Account
-      </Button>
+          {errors.password && (
+            <FieldError errors={[errors.password]} />
+          )}
+        </Field>
 
-    </form>
-    <div className="flex items-center justify-center mt-6">
-      <span className="text-sm ">
-        Don't have an account? {" "}
-        <a href="/auth/signup" className='text-brand hover:underline underline-offset-4 '>Create Account</a>
-      </span>
-      
-    </div>
+        {/* TERMS */}
+        <div>
+          <div className="flex items-start gap-3">
+            <Checkbox
+              checked={termsValue}
+              onCheckedChange={(checked) => {
+                setValue("terms", checked, { shouldValidate: true })
+              }}
+            />
+
+            <p className="text-sm text-gray-600 leading-none">
+              I accept terms & conditions
+            </p>
+          </div>
+
+          {errors.terms && (
+            <p className="text-sm text-red-500">
+              {errors.terms.message}
+            </p>
+          )}
+        </div>
+
+        {/* BUTTON */}
+        <Button
+          type="submit"
+          className="w-full h-10 bg-brand hover:bg-brand/80"
+        >
+          Create Account
+        </Button>
+
+      </form>
+
+      <div className="flex items-center justify-center mt-6">
+        <span className="text-sm">
+          Don't have an account?{" "}
+          <a
+            href="/auth/signup"
+            className="text-brand hover:underline underline-offset-4"
+          >
+            Create Account
+          </a>
+        </span>
+      </div>
     </>
   )
 }
-
-export { SigninPage }

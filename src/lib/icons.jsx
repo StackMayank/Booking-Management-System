@@ -1,13 +1,13 @@
-import { BedDouble, CarTaxiFront, Plane, FerrisWheel, Utensils, TentTree, Star, Gem, Heart, Check, CircleCheck, Zap, Info } from "lucide-react";
+import { BedDouble, CarTaxiFront, Plane, FerrisWheel, Utensils, TentTree, Star, Gem, Heart, Check, CircleCheck, Zap, Info, Eye, EyeOff, ClosedCaption, X, MapPin, CalendarDays, User2, ChevronDown, Minus, Plus } from "lucide-react";
 
 
 const Icons = {
-    bed: <BedDouble />,
-    flight: <Plane />,
-    car: <CarTaxiFront />,
-    attraction: <FerrisWheel />,
-    tours: <TentTree />,
-    resturant: <Utensils />,
+    bed: BedDouble,
+    flight: Plane,
+    car: CarTaxiFront,
+    attraction: FerrisWheel,
+    tours: TentTree,
+    resturant: Utensils,
     twitter: ({ size, ...props }) => (
     <svg
       width={size}
@@ -78,6 +78,15 @@ const Icons = {
   circleCheck: CircleCheck,
   zap: Zap,
   info: Info,
+  eye: Eye,
+  eyeclosed : EyeOff,
+  close: X,
+  location: MapPin,
+  calendar: CalendarDays,
+  user: User2,
+  dropdown: ChevronDown,
+  minus: Minus,
+  plus: Plus,
 }
 
 export default Icons;   

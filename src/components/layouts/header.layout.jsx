@@ -19,12 +19,15 @@ const Header = () => {
                 </div>
             </div>
             <div className='container flex gap-2 overflow-x-auto scrollbar'>
-                {SERVICE_LIST.map((item) => (
-                    <Button key={item.id} className={`bg-transparent shadow-none font-medium rounded-full hover:bg-white/50 cursor-pointer flex items-center justify-between gap-2 px-6 h-11 ${item.active ? 'bg-white/10 border border-white/10' : ''} `}>
-                        {item.icon}
-                        {item.Title}
-                    </Button>
-                ))}
+                {SERVICE_LIST.map((item) => {
+                    const ItemIcon = item.icon;
+                    return (
+                        <Button key={item.id} className={`bg-transparent shadow-none font-medium rounded-full hover:bg-white/50 cursor-pointer flex items-center justify-between gap-2 px-6 h-11 ${item.active ? 'bg-white/10 border border-white/10' : ''} `}>
+                            {ItemIcon && <ItemIcon size={18} />}
+                            {item.Title}
+                        </Button>
+                    );
+                })}
             </div>
         </header>
     )

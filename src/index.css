@@ -94,3 +94,18 @@ body {
     scrollbar-color: var(--primary) var(--brand-color);
   }
 }
+
+button,
+a,
+[role='button'] {
+  @apply select-none cursor-pointer;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
