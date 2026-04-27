@@ -1,74 +1,94 @@
-import React from 'react'
-import Icon from '@/components/ui/icon'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
+import Icon from '@/components/ui/icon';
+import React from 'react';
 
-const Room = (props) => {
-  const {id, type, amenities, price, isSelected, photos} = props
-
+const Room = ({ type, amenities, price, isSelected, photos }) => {
   return (
     <article>
       {isSelected && (
-        <div className='flex items-center gap-1 py-2 px-5 rounded-t-lg bg-brand'>
-          <Icon 
-          icon="star" 
-          size={16} 
-          className="fill-amber-400 stroke-0"
+        <div className="flex items-center gap-1 px-5 py-1 rounded-t-lg bg-brand">
+          <Icon
+            icon="star"
+            size="12"
+            className="fill-amber-500 stroke-transparent"
           />
-          <p className='text-xs font-bold text-white uppercase'
-          >Selected Category
+          <p className="text-xs font-bold text-white uppercase">
+            Selected Category
           </p>
         </div>
       )}
-
-      <div className='flex border border-border p-4'>
-      <div className='flex-1 space-y-3'>
-        <div className='flex items-center gap-4'>
-          <h3 className='text-lg font-semibold'>{type}</h3>
-          {isSelected && <Icon icon="circleCheck" size={25} className='fill-green-400 text-white'/>}
-        </div>
-        <div>
-          <ul className='grid grid-cols-3 gap-2'>
-           {amenities.map((item, index) => (
-              <li key={index} className='flex items-center gap-2'>
-                <Icon icon='check' size={16} className='text-green-400' />
-                <span className='text-sm font-medium text-muted-foreground'>{item}</span>
-              </li>
-            ))}
+      <div className="flex border border-border p-4">
+        <div className="flex-1 space-y-4">
+          <div className="flex gap-2 items-center">
+            <h3 className="text-lg font-semibold">{type}</h3>
+            {isSelected && (
+              <Icon
+                size="26"
+                icon="circleCheck"
+                className="fill-green-600 text-white"
+              />
+            )}
+          </div>
+          <div>
+            <ul className="flex flex-wrap gap-2">
+              {amenities.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex gap-2 items-center min-w-[180px]"
+                >
+                  <Icon icon="check" size="18" className="text-green-600" />
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {item}
+                  </span>
+                </li>
+              ))}
             </ul>
-        </div>
-      </div>
-      <div className='w-[180px] h-[120px] rounded-lg overflow-hidden'>
-        <img src={photos[0]} alt="room-image" className='w-full h-full object-cover' />
-      </div>
-      </div>
-
-      <div className='border py-3 px-3 flex justify-between items-center border-t-0'>
-        <div className='flex gap-3 items-center'>
-        <span className='font-bold text-lg'>₹{price.toLocaleString()}</span>
-        <span className='font-semibold text-sm line-through text-muted-foreground'>₹{(price*1.5).toLocaleString()}</span>
-        </div>
-        <Button disabled={isSelected} variant='outline' className={`uppercase border border-border px-7 py-2 font-semibold text-sm w-[160px] text-red-500 ${isSelected && 'text-gray-900'}`}>
-          {isSelected && <Icon icon="circleCheck" size={25} className='fill-green-400 text-white'/>}
-          {isSelected ? 'selected' : 'select'}</Button>
-      </div>
-    </article>
-  )
-}
-
-const HotelRoomsPicker = (props) => {
-  const {rooms} = props
-  return (
-    <section className='space-y-4'>
-      <h2 className='text-xl font-bold'>Choose Your Room</h2>
-        <div >
-          <div className='space-y-4'>
-            {rooms.map((room) => (
-             <Room key={room.id} {...room} /> 
-            ))}    
           </div>
         </div>
-    </section>
-  )
-}
+        <div className="w-[180px] h-[120px]">
+          <img
+            src={photos[0]}
+            alt={photos[0]}
+            className="object-cover size-full rounded-lg"
+          />
+        </div>
+      </div>
+      <div className="flex border-x border-b p-4 rounded-b-lg">
+        <div className="flex-1 flex gap-2 items-center">
+          <span className="text-lg font-bold">{`₹${price.toLocaleString()}`}</span>
+          <span className="text-sm text-muted-foreground line-through">{`₹${(
+            price * 1.5
+          ).toLocaleString()}`}</span>
+        </div>
+        <Button
+          disabled={isSelected}
+          variant="outline"
+          size="lg"
+          className={`cursor-pointer h-12 font-semibold gap-1 w-[180px] disabled:opacity-80 uppercase ${
+            !isSelected && 'hover:text-destructive text-destructive'
+          }`}
+        >
+          {isSelected && (
+            <Icon icon="circleCheck" className="fill-green-600 text-white" />
+          )}
+          {isSelected ? 'Selected' : 'Select'}
+        </Button>
+      </div>
+    </article>
+  );
+};
 
-export default HotelRoomsPicker
+const HotelRoomPicker = ({ rooms }) => {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-xl font-bold">Choose your room</h2>
+      <div className="space-y-4">
+        {rooms.map((room) => (
+          <Room {...room} key={room.id} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default HotelRoomPicker;

@@ -56,7 +56,7 @@ const HotelImages = ({ photos }) => {
   );
 };
 
-const HotelCard = ({ name, photos, city, id, amenities, price }) => {
+const HotelCard = ({ name, photos, city, amenities, price }) => {
   return (
     <article className="flex w-full transition-colors border rounded-lg hover:border-primary">
       <div className="flex flex-1 gap-4 p-4">

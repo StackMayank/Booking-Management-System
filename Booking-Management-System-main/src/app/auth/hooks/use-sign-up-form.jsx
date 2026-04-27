@@ -4,7 +4,7 @@ import useMutation from '@/lib/hooks/useMutation';
 import { signUpSchema } from '@/lib/validators/auth-form-validator';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const useSignUpForm = () => {
@@ -17,7 +17,7 @@ const useSignUpForm = () => {
   );
 
   const form = useForm({
-    // resolver: zodResolver(signUpSchema),
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -27,19 +27,15 @@ const useSignUpForm = () => {
 
   function handleSignUpSubmit(data) {
     mutate(data, {
-      onSuccess: (response) => {
-        console.log(response);
-        toast("Sign up successful", {
-          description: "User your credentials to Sign in",
-          type: "success"
-        })
+      onSuccess: () => {
+        toast('Sign up successful', {
+          description: 'Use your credentials to sign in',
+        });
         navigate(PATHS.SIGN_IN);
       },
       onError: (err) => {
-        console.log(err);
-        toast('Error: '+(err.status || ''), {
+        toast(`Error: ${err.status || ''}`, {
           description: err.message,
-          type: 'error',
         });
       },
     });

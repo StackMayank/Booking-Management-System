@@ -9,15 +9,12 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PATHS } from '@/config/path.config';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSignInForm } from './hooks/use-sign-in-form';
 
-
 const SignIn = () => {
-  
-  const {form, handleSignInSubmit, pending} = useSignInForm();
+  const { form, handleSignInSubmit, pending } = useSignInForm();
 
   return (
     <>
@@ -72,7 +69,7 @@ const SignIn = () => {
       </Form>
       <div className="flex items-center justify-center mt-6">
         <span className="text-sm ">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link to={PATHS.SIGN_UP} className="text-primary hover:underline">
             Create Account
           </Link>

@@ -46,7 +46,7 @@ const DateSelectInput = ({ form }) => {
             <PopoverContent
               sideOffset="1"
               align="start"
-              className="w-auto p-2"
+              className="w-[640px]"
               onOpenAutoFocus={(e) => e.preventDefault()}
             >
               <Calendar

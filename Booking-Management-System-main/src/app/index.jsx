@@ -1,12 +1,14 @@
-import Router from "./router"
-
+import { Toaster } from 'sonner';
+import Router from './router';
+import AuthContextProvider from '@/lib/providers/auth-context-provider';
 
 const App = () => {
   return (
-    <div>
+    <AuthContextProvider>
       <Router />
-    </div>
-  )
-}
+      <Toaster position="top-center" richColors />
+    </AuthContextProvider>
+  );
+};
 
-export default App
+export default App;

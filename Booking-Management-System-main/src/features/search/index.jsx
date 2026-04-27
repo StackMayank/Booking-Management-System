@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Form } from '@/components/ui/form';
 import LocationInput from './location-input';
@@ -6,20 +6,18 @@ import DateSelectInput from './date-select-input';
 import OccupancyInput from './occupancy-input';
 import { Button } from '@/components/ui/button';
 
-const index = () => {
-
+const Search = () => {
   const form = useForm({
     defaultValues: {
-      location: '',
+      city: '',
       bookingDates: { from: null, to: null },
       roomsCount: 1,
     },
   });
 
   function onSubmit(data) {
-    console.log("Search data ", data);
+    console.log('Search data ', data);
   }
-
 
   return (
    <section className='container'>
@@ -36,7 +34,7 @@ const index = () => {
             </form>
       </Form>
    </section>
-  )
-}
+  );
+};
 
-export default index
+export default Search;

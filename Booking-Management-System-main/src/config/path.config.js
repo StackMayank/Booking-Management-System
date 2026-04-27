@@ -1,7 +1,12 @@
-export const PATHS = {
-  HOME: '/',
-  SEARCH: '/search',
-  HOTEL: '/hotel/:hotelId',
-  SIGN_IN: '/sign-in',
-  SIGN_UP: '/sign-up',
-};
+const PATHS = {
+
+  LANDING: '/',
+
+  SIGN_IN: '/signin',
+  SIGN_UP: '/signup',
+
+  HOTEL: '/hotel/:id',
+  SEARCH: '/search'
+}
+
+export {PATHS};

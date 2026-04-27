@@ -1,4 +1,4 @@
-import { BedDouble, CarTaxiFront, Plane, FerrisWheel, Utensils, TentTree, Star, Gem, Heart, Check, CircleCheck, Zap, Info, Eye, EyeOff, ClosedCaption, X, MapPin, CalendarDays, User2, ChevronDown, Minus, Plus } from "lucide-react";
+import { BedDouble, CarTaxiFront, Plane, FerrisWheel, Utensils, TentTree, Star, Gem, Heart, Check, CircleCheck, Zap, Info, Eye, EyeOff, X, MapPin, CalendarDays, User2, ChevronDown, Minus, Plus } from "lucide-react";
 
 
 const Icons = {
@@ -58,7 +58,7 @@ const Icons = {
   ),
   star: Star,
   gem : Gem,
-  curve: ({ size, ...props }) => (
+  curve: ({ ...props }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="9"

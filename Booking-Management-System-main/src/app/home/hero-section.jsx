@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 
 const HeroSection = () => {
     return (
-        <div>
+        
             <section className='relative min-h-[372px] bg-black '>
                 <img src="https://images.pexels.com/photos/376368/pexels-photo-376368.jpeg" alt="hero-image" className='absolute z-1 size-full object-cover inset-0 brightness-75 ' />
                 <div className=' relative z-2 container top-5 space-y-2'>
@@ -14,7 +14,7 @@ const HeroSection = () => {
                     <Button className='mt-8 h-12 px-4 text-base font-semibold cursor-pointer '>Discover Holiday Rentals</Button>
                 </div>
             </section>
-        </div>
+        
     )
 }
 export default HeroSection

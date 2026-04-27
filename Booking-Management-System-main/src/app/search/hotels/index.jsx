@@ -2,7 +2,7 @@ import React from 'react'
 import HotelCard from './components/hotel-card'
 import HotelCardSkeleton from './components/hotel-card-skeleton'
 
-const Hotels = ({isLoading, data, error}) => {
+const Hotels = ({isLoading, data}) => {
   if(isLoading) return (
     <div className="space-y-4">
       <HotelCardSkeleton />
@@ -12,7 +12,6 @@ const Hotels = ({isLoading, data, error}) => {
 
   return (
     <div className="space-y-4">
-      <HotelCardSkeleton />
       {data.map((hotel) => (
         <HotelCard key={hotel.id} {...hotel} />
       ))}

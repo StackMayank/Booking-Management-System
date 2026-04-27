@@ -1,5 +1,5 @@
 import React from 'react';
-import axiosInstance from '../axios-instance';
+import axiosInstance from '../axios.instance';
 
 
 function useMutation(url, method) {

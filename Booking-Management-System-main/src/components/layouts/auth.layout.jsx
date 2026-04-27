@@ -1,3 +1,4 @@
+import { getAssetPath } from '@/lib/utils';
 import React from 'react';
 
 const AuthLayout = ({ children, title, description }) => {
@@ -9,7 +10,7 @@ const AuthLayout = ({ children, title, description }) => {
             <img
               width={30}
               height={30}
-              src="/bookingcom-icon-logo.svg"
+              src={getAssetPath('bookingcom-icon-logo.svg')}
               alt="Logo"
             />
           </div>

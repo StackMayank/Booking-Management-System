@@ -24,11 +24,10 @@ export default function useQuery({ url, options = {} }) {
         error: null,
       });
     } catch (e) {
-      setQueryState({
-        data: null,
-        isLoading: false,
-        error: e.response?.data?.message || e.message,
-      });
+      setQueryState((prev) => ({
+        ...prev,
+        error: e.message,
+      }));
     } finally {
       setQueryState((prev) => ({
         ...prev,
@@ -39,6 +38,7 @@ export default function useQuery({ url, options = {} }) {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   return { ...queryState };

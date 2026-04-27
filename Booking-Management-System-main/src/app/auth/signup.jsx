@@ -13,7 +13,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSignUpForm } from './hooks/use-sign-up-form';
 
-
 const SignUp = () => {
 
   const { form, handleSignUpSubmit, pending } = useSignUpForm();
@@ -79,7 +78,7 @@ const SignUp = () => {
       </Form>
       <div className="flex items-center justify-center mt-6">
         <span className="text-sm ">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link to={PATHS.SIGN_IN} className="text-primary hover:underline">
             Sign in
           </Link>

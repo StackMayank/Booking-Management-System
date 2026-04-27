@@ -1,31 +1,39 @@
-import React from 'react'
-import{Carousel, CarouselItem, CarouselPrevious, CarouselNext, CarouselContent} from '@/components/ui/carousel'
-const PropertyViewCarousel = (props) => {
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import React from 'react';
 
-  const {images} = props
-
+const PropertyViewCarousel = ({ images }) => {
   return (
     <section>
-      <Carousel 
-      className='overflow-hidden rounded-lg'
+      <Carousel
+        className="overflow-hidden rounded-lg"
         opts={{
           breakpoints: {
-            '(min-width: 1024px)' : { slidesToScroll: 2 },
+            '(min-width: 1024px)': { slidesToScroll: 2 },
           },
         }}
       >
-        <CarouselContent className='-ml-0.5'>
-              {images.map((image, index) => (
-                  <CarouselItem key={index} className='basis-1/2 pl-0.5'>
-                      <img src={image} alt={`hotel-image-${index}`} className='w-full h-96 object-cover' />
-                  </CarouselItem>
-              ))}
-          </CarouselContent> 
-        <CarouselPrevious className=' left-1  text-black '/>
-        <CarouselNext className=' right-1 text-black '/>
+        <CarouselContent className="-ml-0.5">
+          {images.map((image, index) => (
+            <CarouselItem key={index} className="lg:basis-1/2 pl-0.5">
+              <img
+                className="h-96 w-full object-cover"
+                src={image}
+                alt={`Image index: ${index}`}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-1 shadow-lg" />
+        <CarouselNext className="right-1 shadow-lg" />
       </Carousel>
     </section>
-  )
-}
+  );
+};
 
-export default PropertyViewCarousel
+export default PropertyViewCarousel;

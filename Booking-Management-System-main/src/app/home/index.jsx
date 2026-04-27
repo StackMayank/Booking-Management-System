@@ -5,13 +5,13 @@ import Search from '@/features/search'
 
 const Home = () => {
   return (
-    <div>
+    <>
         <HeroSection />
         <div className='-mt-8 relative z-2'>
           <Search />
         </div>
         <TrendingDestination />
-    </div>
+    </>
   )
 }
 

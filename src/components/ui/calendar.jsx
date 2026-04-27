@@ -1,9 +1,9 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import * as React from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 
-import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   return (
@@ -11,63 +11,58 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{
-        months: 'flex flex-col sm:flex-row gap-4',
-        month: 'flex flex-col gap-4',
-        month_caption: 'flex justify-center pt-1 relative items-center w-full',
-        caption_label: 'text-sm font-medium',
-        nav: 'flex items-center gap-1',
-        button_previous: cn(
-          buttonVariants({ variant: 'outline' }),
-          'absolute left-1 top-0 size-7 bg-transparent p-0 opacity-50 hover:opacity-100'
-        ),
-        button_next: cn(
-          buttonVariants({ variant: 'outline' }),
-          'absolute right-1 top-0 size-7 bg-transparent p-0 opacity-50 hover:opacity-100'
-        ),
-        month_grid: 'w-full border-collapse space-y-1',
-        weekdays: 'flex',
-        weekday: 'text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]',
-        week: 'flex w-full mt-2',
-        day: cn(
-          'relative h-8 w-8 p-0 text-center text-sm focus-within:relative focus-within:z-20',
-          '[&:has([aria-selected])]:bg-accent',
-          '[&:has([aria-selected].day-outside)]:bg-accent/50',
-          '[&:has([aria-selected].day-range-end)]:rounded-r-md',
-          'first:[&:has([aria-selected])]:rounded-l-md',
-          'last:[&:has([aria-selected])]:rounded-r-md'
-        ),
-        day_button: cn(
+        months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
+        month: '',
+        caption: 'flex justify-center h-12 relative items-center',
+        caption_label: 'text-base font-semibold',
+        nav: 'space-x-1 flex items-center',
+        nav_button: cn(
           buttonVariants({ variant: 'ghost' }),
-          'size-8 p-0 font-normal aria-selected:opacity-100'
+          'h-12 w-12 bg-transparent p-0'
         ),
-        range_start:
-          'day-range-start [&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground rounded-l-md',
-        range_end:
-          'day-range-end [&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground rounded-r-md',
-        selected:
-          '[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground',
-        today: '[&>button]:bg-accent [&>button]:text-accent-foreground',
-        outside:
-          'day-outside invisible opacity-0 pointer-events-none cursor-default',
-        disabled: 'text-muted-foreground opacity-50 line-through',
-        range_middle:
+        nav_button_previous: 'absolute left-1',
+        nav_button_next: 'absolute right-1',
+        table: 'w-full border-collapse space-y-1',
+        head_row: 'flex mt-2',
+        head_cell: 'text-muted-foreground rounded-md w-10 font-normal text-sm',
+        row: 'flex w-full mt-1',
+        cell: 'h-11 w-10 text-center text-sm group p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-range-start)]:rounded-l-md [&:has([aria-selected].day-range-end)]:rounded-r-md focus-within:relative focus-within:z-20',
+        day: cn(
+          buttonVariants({ variant: 'ghost' }),
+          'h-11 w-10 p-0 font-normal aria-selected:opacity-100 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-transparent rounded-[inherit] '
+        ),
+        day_range_end: 'day-range-end',
+        day_range_start: 'day-range-start',
+        day_selected:
+          'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
+        day_today: 'text-primary font-semibold',
+        day_outside:
+          'day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground',
+        day_disabled: 'text-muted-foreground opacity-50',
+        day_range_middle:
           'aria-selected:bg-accent aria-selected:text-accent-foreground',
-        hidden: 'invisible',
+        day_hidden: 'invisible',
         ...classNames,
       }}
       components={{
-        Chevron: ({ orientation }) =>
-          orientation === 'left' ? (
-            <ChevronLeft className="size-4" />
-          ) : (
-            <ChevronRight className="size-4" />
-          ),
+        IconLeft: ({ className, ...props }) => (
+          <ChevronLeft
+            className={cn('h-5 w-5 text-foreground', className)}
+            {...props}
+          />
+        ),
+        IconRight: ({ className, ...props }) => (
+          <ChevronRight
+            className={cn('h-5 w-5 text-foreground', className)}
+            {...props}
+          />
+        ),
       }}
       {...props}
     />
   );
 }
-
 Calendar.displayName = 'Calendar';
 
 export { Calendar };
+// [&:not([aria-selected].day-range-end)]:[&:not([aria-selected].day-range-start)]:bg-red-500
