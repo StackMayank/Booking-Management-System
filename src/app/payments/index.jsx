@@ -1,7 +1,5 @@
-import React from 'react';
 import usePollPaymentStatus from './hooks/use-poll-payment-status';
-import { BOOKING_STATUS, PAYMENT_STATUS_CONFIG } from '@/config/payment.config';
-import { LinkWithIcon } from '@/components/ui/link';
+import { BOOKING_STATUS } from '@/config/payment.config';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, AlertCircle, Clock, ChevronRight } from 'lucide-react';

@@ -1,24 +1,34 @@
 import { FOOTER_SECTION, SOCIAL_LINKS } from '@/config/app.config';
-import React from 'react';
+import { memo } from 'react';
 import Icon from '../ui/icon';
 import dayjs from 'dayjs';
 
 const Footer = () => {
   return (
-    <div className="bg-[#0f172a] p-8 mt-[60px]">
-      <footer className="container py-10 md:py-20">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-10">
+    <div className="bg-[#0f172a] px-4 py-8 sm:px-6 md:px-8 mt-[60px]">
+      <footer className="w-full py-10 md:py-20 lg:container">
+        {/* Below lg: centered block with capped width so columns sit in the middle of the viewport */}
+        <div
+          className={[
+            'mx-auto grid w-full max-w-xs grid-cols-1 justify-items-center gap-y-10',
+            'sm:max-w-lg sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 md:max-w-xl',
+            'lg:max-w-none lg:w-full lg:grid-cols-5 lg:justify-items-stretch lg:gap-x-4 lg:gap-y-10',
+          ].join(' ')}
+        >
           {FOOTER_SECTION.slice(0, 4).map((section, index) => (
-            <div key={index} className="flex flex-col gap-6">
-              <h3 className="text-sm font-bold uppercase tracking-wide text-white">
+            <div
+              key={index}
+              className="flex w-full max-w-[14rem] flex-col items-center gap-6 text-center sm:max-w-none lg:items-start lg:text-left"
+            >
+              <h3 className="w-full text-sm font-bold uppercase tracking-wide text-white">
                 {section.title}
               </h3>
-              <ul className="flex flex-col gap-5">
+              <ul className="m-0 flex w-full list-none flex-col items-center gap-5 p-0 text-center lg:items-start lg:text-left">
                 {section.links.map((link, index) => (
-                  <li key={index}>
+                  <li key={index} className="w-full text-center lg:w-auto lg:text-left">
                     <a
                       href={link.href}
-                      className="text-base font-normal text-slate-300 transition-colors hover:text-white"
+                      className="inline-block text-base font-normal text-slate-300 transition-colors hover:text-white"
                     >
                       {link.text}
                     </a>
@@ -28,7 +38,7 @@ const Footer = () => {
             </div>
           ))}
           {/* Last section for desktop */}
-          <div className="hidden lg:flex flex-col gap-6">
+          <div className="hidden lg:flex flex-col gap-6 lg:items-start lg:text-left">
             <h3 className="text-sm font-bold uppercase tracking-wide text-white">
               {FOOTER_SECTION[4].title}
             </h3>
@@ -113,4 +123,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);
