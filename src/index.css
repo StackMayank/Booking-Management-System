@@ -129,6 +129,17 @@ a,
   }
 }
 
+/* react-day-picker: anchor nav to each month caption; split prev/next in multi-month */
+.rdp-calendar-nav {
+  justify-content: space-between;
+}
+.rdp-multiple_months .rdp-caption_start:not(.rdp-caption_end) .rdp-calendar-nav {
+  justify-content: flex-start;
+}
+.rdp-multiple_months .rdp-caption_end:not(.rdp-caption_start) .rdp-calendar-nav {
+  justify-content: flex-end;
+}
+
 .dark {
   --sidebar: hsl(240 5.9% 10%);
   --sidebar-foreground: hsl(240 4.8% 95.9%);

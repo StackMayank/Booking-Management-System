@@ -1,4 +1,4 @@
-import { Bed, CalendarClock, CalendarDays, CalendarSearchIcon, CarFront, CarTaxiFront, Check, ChevronDown, ChevronLeft, CircleCheck, DoorOpen, Dot, EllipsisVertical, Eye, FerrisWheel, Gem, Heart, Hotel, ImagePlus, Info, LayoutGrid, Loader2, LogOutIcon, MapPin, Mars, Minus, MoveRight, Pen, Plane, Plus, Save, ShieldCheck, Star, User2, Users, Venus, X, Zap } from "lucide-react";
+import { Bed, CalendarClock, CalendarDays, CarFront, CarTaxiFront, Check, ChevronDown, ChevronLeft, CircleCheck, DoorOpen, Dot, EllipsisVertical, Eye, FerrisWheel, Gem, Heart, Hotel, ImagePlus, Info, LayoutGrid, Loader2, LogOutIcon, MapPin, Mars, Minus, MoveRight, Pen, Plane, Plus, Save, Search, ShieldCheck, Star, User2, Users, Venus, X, Zap } from "lucide-react";
 
 export default {
   bed: Bed,
@@ -40,6 +40,30 @@ export default {
       {...props}
     >
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  ),
+  facebook: ({ size, ...props }) => (
+    <svg
+      width={size}
+      height={size}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path d="M22.675 0h-21.35C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.114C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
+    </svg>
+  ),
+  linkedin: ({ size, ...props }) => (
+    <svg
+      width={size}
+      height={size}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.942v5.664H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.369-1.852 3.602 0 4.267 2.371 4.267 5.455v6.288zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.114 20.452H3.558V9h3.556v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
     </svg>
   ),
   instagram: ({ size, ...props }) => (
@@ -100,5 +124,6 @@ export default {
   hotel: Hotel,
   addImage: ImagePlus,
   spinner: Loader2 ,
-  leftArrow: ChevronLeft
+  leftArrow: ChevronLeft,
+  search: Search,
 };

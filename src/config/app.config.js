@@ -61,67 +61,59 @@ export const TRENDING_DESTINATIONS = [
 
 export const FOOTER_SECTION = [
   {
+    title: 'Company',
+    links: [
+      { text: 'About Us', href: '#' },
+      { text: 'Careers', href: '#' },
+      { text: 'Press', href: '#' },
+      { text: 'Blog', href: '#' },
+    ],
+  },
+  {
     title: 'Support',
     links: [
-      { text: 'Coronavirus (COVID-19) FAQs', href: '#' },
-      { text: 'Manage your trips', href: '#' },
-      { text: 'Contact Customer Service', href: '#' },
-      { text: 'Safety resource centre', href: '#' },
+      { text: 'Help Center', href: '#' },
+      { text: 'Safety Info', href: '#' },
+      { text: 'Cancellation', href: '#' },
+      { text: 'Contact Us', href: '#' },
     ],
   },
   {
-    title: 'Discover',
+    title: 'Explore',
     links: [
-      { text: 'Genius loyalty programme', href: '#' },
-      { text: 'Seasonal and holiday deals', href: '#' },
-      { text: 'Travel articles', href: '#' },
-      { text: 'Booking.com for Business', href: '#' },
-      { text: 'Traveller Review Awards', href: '#' },
-      { text: 'Car hire', href: '#' },
-      { text: 'Flight finder', href: '#' },
-      { text: 'Restaurant reservations', href: '#' },
-      { text: 'Booking.com for Travel Agents', href: '#' },
+      { text: 'Destinations', href: '#' },
+      { text: 'Deals', href: '#' },
+      { text: 'Reviews', href: '#' },
+      { text: 'Travel Guides', href: '#' },
     ],
   },
   {
-    title: 'Terms and settings',
+    title: 'Hosting',
     links: [
-      { text: 'Privacy & cookies', href: '#' },
-      { text: 'Terms and conditions', href: '#' },
-      { text: 'Grievance officer', href: '#' },
-      { text: 'Modern Slavery Statement', href: '#' },
-      { text: 'Human Rights Statement', href: '#' },
+      { text: 'List Your Property', href: '#' },
+      { text: 'Host Resources', href: '#' },
+      { text: 'Community', href: '#' },
+      { text: 'Responsible Hosting', href: '#' },
     ],
   },
   {
-    title: 'Partners',
+    title: 'Legal',
     links: [
-      { text: 'Extranet login', href: '#' },
-      { text: 'Partner help', href: '#' },
-      { text: 'List your property', href: '#' },
-      { text: 'Become an affiliate', href: '#' },
-    ],
-  },
-  {
-    title: 'About',
-    links: [
-      { text: 'About Booking.com', href: 'https://codingshuttle.com' },
-      { text: 'How we work', href: '#' },
-      { text: 'Sustainability', href: '#' },
-      { text: 'Press centre', href: '#' },
-      { text: 'Careers', href: '#' },
-      { text: 'Investor relations', href: '#' },
-      { text: 'Corporate contact', href: '#' },
+      { text: 'Privacy Policy', href: '#' },
+      { text: 'Terms of Service', href: '#' },
+      { text: 'Cookie Policy', href: '#' },
+      { text: 'Accessibility', href: '#' },
     ],
   },
 ];
 
 
 export const SOCIAL_LINKS = [
-  { icon: 'pinterest', href: '#', title: 'Pinterest' },
+  { icon: 'facebook', href: '#', title: 'Facebook' },
   { icon: 'twitter', href: '#', title: 'Twitter' },
   { icon: 'instagram', href: '#', title: 'Instagram' },
   { icon: 'youtube', href: '#', title: 'Youtube' },
+  { icon: 'linkedin', href: '#', title: 'LinkedIn' },
 ];
 
 export const DESTINATIONS = [
@@ -137,7 +129,7 @@ export const DESTINATIONS = [
   { city: 'Pune', country: 'India' }
 ];
 
-export const SEARCH_RESULT_PAGE_LIMIT = 2;
+export const SEARCH_RESULT_PAGE_LIMIT = 5;
 
 export const SEARCH_PARAMS_KEYS = {
   CHECKIN: 'startDate',
@@ -243,4 +235,3 @@ export const bookingStatusVariant = {
     text: 'Pending',
   },
 };
-

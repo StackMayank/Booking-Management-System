@@ -109,23 +109,25 @@ const HotelSettings = () => {
 
 const HotelMetaInfo = ({ name, address, photo, active }) => {
   return (
-    <article className="flex items-center justify-between p-4 border rounded-md">
-      <div className="flex gap-4">
+    <article className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 md:p-4 border rounded-md gap-4">
+      <div className="flex gap-3 md:gap-4 w-full sm:flex-1 min-w-0">
         <img
           src={photo}
           alt={name}
           width={150}
           height={100}
-          className="rounded-md"
+          className="rounded-md w-24 md:w-[150px] h-20 md:h-[100px] object-cover flex-shrink-0"
         />
-        <div className="space-y-3">
-          <div className="space-y-2">
-            <h2 className="text-xl font-semibold leading-none">{name}</h2>
-            <p className="text-muted-foreground">{address}</p>
+        <div className="space-y-2 md:space-y-3 flex-1 min-w-0">
+          <div className="space-y-1 md:space-y-2">
+            <h2 className="text-base md:text-xl font-semibold leading-none line-clamp-2">{name}</h2>
+            <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">{address}</p>
           </div>
         </div>
       </div>
-      <HotelSettings />
+      <div className="flex-shrink-0">
+        <HotelSettings />
+      </div>
     </article>
   );
 };

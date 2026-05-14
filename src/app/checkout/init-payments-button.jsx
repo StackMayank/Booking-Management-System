@@ -30,7 +30,7 @@ const InitiatePaymentsButton = ({id}) => {
       onClick={initiatePayment}
       size="lg"
       disabled={pending}
-      className="w-full h-12 shadow-lg uppercase text-base font-semibold transition-opacity  bg-purple-700 hover:bg-purple-700/80"
+      className="w-full h-12 shadow-lg uppercase text-base font-semibold transition-opacity bg-green-600 hover:bg-green-700"
     >
       <Icon size="30" icon="shield" />
       Proceed to Pay

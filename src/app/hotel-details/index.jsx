@@ -21,15 +21,15 @@ const HotelDetails = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="container mt-6 mb-12">
+    <div className="container mt-4 md:mt-6 mb-8 md:mb-12">
       <PropertyViewCarousel images={hotelData.hotel.photos} />
-      <div className="flex gap-6 mt-6">
-        <div className="flex-1 space-y-8">
+      <div className="flex flex-col lg:flex-row gap-4 md:gap-6 mt-4 md:mt-6">
+        <div className="flex-1 space-y-6 md:space-y-8">
           <HotelMetaDetails hotel={hotelData.hotel} info={hotelInfo} />
           <HotelRoomPicker rooms={hotelData.rooms} />
           <HotelPolicy hotelPolicy={hotelInfo.hotelPolicy} />
         </div>
-        <aside className="w-[340px] shrink-0 p-4 border border-border shadow-md rounded-xl sticky top-6 h-min">
+        <aside className="w-full lg:w-[340px] shrink-0 p-3 md:p-4 border border-border shadow-md rounded-xl lg:sticky lg:top-6 lg:h-min">
           <HotelCheckoutCard
             rooms={hotelData.rooms}
             cancellationPolicy={hotelInfo.cancellationPolicy}

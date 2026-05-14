@@ -58,25 +58,19 @@ const HotelImages = ({ photos }) => {
   );
 };
 
-const HotelCard = ({ name, photos, city, id, amenities, price }) => {
+const HotelCard = ({ name, photos, city, id, amenities, price, taxes }) => {
   const navigationUrl = useHotelNavigation(id);
+  const calculatedTaxes = taxes || Math.round(price * 0.18);
+  
   return (
-    <Link className='inline-block' to={navigationUrl}>
+    <Link className='inline-block w-full' to={navigationUrl}>
     <article className="flex w-full transition-colors border rounded-lg hover:border-primary">
       <div className="flex flex-1 gap-4 p-4">
         <HotelImages photos={photos} />
         <div className="space-y-3">
           <div className="space-y-0.5">
             <h2 className="inline text-xl font-bold">
-              {name} &nbsp;
-              {new Array(3).fill(0).map((_, index) => (
-                <Icon
-                  key={index}
-                  icon="star"
-                  size="12"
-                  className="inline mb-2 text-yellow-500"
-                />
-              ))}
+              {name}
             </h2>
             <p className="text-sm font-semibold text-primary">{city}</p>
           </div>
@@ -123,7 +117,7 @@ const HotelCard = ({ name, photos, city, id, amenities, price }) => {
         </div>
         <div className="flex flex-col items-end justify-center flex-1">
           <p className="text-2xl font-bold">{`₹ ${price.toLocaleString()}`}</p>
-          <p className="text-sm text-muted-foreground">{`+ ₹0 taxes & fees`}</p>
+          <p className="text-sm text-muted-foreground">{`+ ₹${calculatedTaxes.toLocaleString()} taxes & fees`}</p>
           <p className="text-sm text-muted-foreground">Per Night</p>
         </div>
       </div>

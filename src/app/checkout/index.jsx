@@ -25,14 +25,14 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="container flex items-center my-20">
-      <div className="flex-1 max-w-2xl py-4 mx-auto border border-border shadow-lg rounded-xl bg-background">
-        <div className="px-4">
-          <h1 className="text-xl font-bold">Booking Checkout</h1>
+    <div className="container flex items-center my-8 md:my-20 px-2 sm:px-4">
+      <div className="flex-1 max-w-2xl py-3 md:py-4 mx-auto border border-border shadow-lg rounded-lg md:rounded-xl bg-background w-full">
+        <div className="px-3 md:px-4">
+          <h1 className="text-lg md:text-xl font-bold">Booking Checkout</h1>
         </div>
-        <Separator className="my-4" />
+        <Separator className="my-3 md:my-4" />
         <BookingDetails booking={data || {}} />
-        <div className="px-4 mt-6">
+        <div className="px-3 md:px-4 mt-4 md:mt-6">
           <InitiatePaymentsButton id={data.id} />
         </div>
       </div>

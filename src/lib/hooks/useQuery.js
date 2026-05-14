@@ -13,14 +13,14 @@ export default function useQuery({ url, options = {} }) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await axiosInstance(url, options);
       setQueryState({
-        data: response.data,
+        data: response,
         pending: false,
         error: null,
       });
     } catch (e) {
       setQueryState((prev) => ({
         ...prev,
-        error: e.message,
+        error: e?.message || e || 'Something went wrong',
       }));
     } finally {
       setQueryState((prev) => ({

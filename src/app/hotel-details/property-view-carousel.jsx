@@ -22,7 +22,7 @@ const PropertyViewCarousel = ({ images }) => {
           {images.map((image, index) => (
             <CarouselItem key={index} className="lg:basis-1/2 pl-0.5">
               <img
-                className="h-96 w-full object-cover"
+                className="h-48 sm:h-64 md:h-80 lg:h-96 w-full object-cover"
                 src={image}
                 alt={`Image index: ${index}`}
               />

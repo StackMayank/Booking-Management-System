@@ -7,6 +7,9 @@ const Hotels = ({isLoading, data, error}) => {
     <div className="space-y-4">
       <HotelCardSkeleton />
       <HotelCardSkeleton />
+      <HotelCardSkeleton />
+      <HotelCardSkeleton />
+      <HotelCardSkeleton />
     </div>
   );
 

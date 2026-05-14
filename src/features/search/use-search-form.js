@@ -10,14 +10,24 @@ export default function useSearchForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const defaultValues = {
-    city: searchParams.get(SEARCH_PARAMS_KEYS.LOCATION) || '',
-    roomsCount: parseInt(searchParams.get(SEARCH_PARAMS_KEYS.ROOMS)) || 1,
-    bookingDates: {
-      from: dayjs(searchParams.get(SEARCH_PARAMS_KEYS.CHECKIN)).toDate(),
-      to: dayjs(searchParams.get(SEARCH_PARAMS_KEYS.CHECKOUT)).toDate(),
-    },
-  };
+  const defaultValues = useMemo(() => {
+    const checkInRaw = searchParams.get(SEARCH_PARAMS_KEYS.CHECKIN);
+    const checkOutRaw = searchParams.get(SEARCH_PARAMS_KEYS.CHECKOUT);
+    const from =
+      checkInRaw && dayjs(checkInRaw).isValid()
+        ? dayjs(checkInRaw).toDate()
+        : undefined;
+    const to =
+      checkOutRaw && dayjs(checkOutRaw).isValid()
+        ? dayjs(checkOutRaw).toDate()
+        : undefined;
+
+    return {
+      city: searchParams.get(SEARCH_PARAMS_KEYS.LOCATION) || '',
+      roomsCount: parseInt(searchParams.get(SEARCH_PARAMS_KEYS.ROOMS), 10) || 1,
+      bookingDates: { from, to },
+    };
+  }, [searchParams]);
 
   const form = useForm({
     resolver: zodResolver(searchFormSchema),
@@ -26,7 +36,7 @@ export default function useSearchForm() {
 
   useEffect(() => {
     form.reset(defaultValues);
-  }, [searchParams]);
+  }, [defaultValues, form]);
 
   function searchSubmitHandler(data) {
     const sendData = {

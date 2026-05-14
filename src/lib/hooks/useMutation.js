@@ -16,7 +16,7 @@ function useMutation(url, method) {
         url: url,
         data: payload,
       });
-      setMutateState((prev) => ({ ...prev, data: response.data }));
+      setMutateState((prev) => ({ ...prev, data: response }));
       
       if (cb && cb.onSuccess && typeof cb.onSuccess === 'function') {
         cb.onSuccess(response);
@@ -24,7 +24,7 @@ function useMutation(url, method) {
     } catch (err) {
       setMutateState((prev) => ({
         ...prev,
-        error: err.message,
+        error: err?.message || err || 'Something went wrong',
       }));
       if (cb && cb.onError && typeof cb.onError === 'function') {
         cb.onError(err);

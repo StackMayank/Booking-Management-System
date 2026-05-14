@@ -13,17 +13,41 @@ import { Button, ButtonWithIcon } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import TokenInput from '@/components/ui/token-input';
 import HotelImage from '@/components/hotel-image';
+import axiosInstance from '@/lib/axios-instance';
 
 const CreateHotelForm = () => {
   const { form, createHotelHandler, pending } = useCreateHotelForm();
+
+  const handleFileUpload = async (e, field) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('photos', files[i]);
+    }
+
+    try {
+      const response = await axiosInstance.post('/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      const urls = response.data?.urls || response.urls || [];
+      field.onChange([...field.value, ...urls]);
+    } catch {
+      // Upload endpoint not available — silently ignore (matches original behavior)
+    }
+
+    e.target.value = '';
+  };
+
   return (
     <div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(createHotelHandler)}
-          className="space-y-6"
+          className="space-y-4 md:space-y-6"
         >
-          <div className="flex gap-6">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-6">
             <FormField
               control={form.control}
               name="name"
@@ -66,9 +90,7 @@ const CreateHotelForm = () => {
                       accept="image/*"
                       ref={field.ref}
                       className={'hidden'}
-                      onChange={(e) => {
-                        field.onChange([...field.value]);
-                      }}
+                      onChange={(e) => handleFileUpload(e, field)}
                     />
                   </FormControl>
                   {field.value?.map((photo, index) => (

@@ -16,19 +16,21 @@ function usePollPaymentStatus() {
 
   async function getPaymentStatus() {
     try {
-      const { data } = await axiosInstance.get(
+      const response = await axiosInstance.get(
         API_CONFIG.BOOKING.STATUS_BOOKING.URL(bookingId)
       );
+
+      const booking = response.data || response;
 
       if (
         [
           BOOKING_STATUS.CONFIRMED,
           BOOKING_STATUS.CANCELLED,
           BOOKING_STATUS.EXPIRED,
-        ].includes(data.bookingStatus)
+        ].includes(booking.bookingStatus)
       ) {
         setMaxRetries(0);
-        setPaymentStatus(data.bookingStatus);
+        setPaymentStatus(booking.bookingStatus);
         return;
       }
 

@@ -37,14 +37,14 @@ axiosInstance.interceptors.response.use(
         removeStorageItem(AUTH_TOKEN_KEY);
       } else {
         const response = await axiosInstance.post('/auth/refresh');
-        setStorageItem(AUTH_TOKEN_KEY, response.data.accessToken);
+        setStorageItem(AUTH_TOKEN_KEY, response.data?.accessToken || response.accessToken);
         return axiosInstance(requestConfig);
       }
     }
 
     const error = {
       ...(request?.response?.data?.error || {}),
-      message: request?.response?.data?.error.message || 'Something went wrong',
+      message: request?.response?.data?.error?.message || 'Something went wrong',
     };
     return Promise.reject(error);
   }
