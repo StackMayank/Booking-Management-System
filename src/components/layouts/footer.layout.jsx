@@ -53,11 +53,11 @@ const Footer = () => {
         {/* Mobile - Fifth section and divider */}
         <div className="lg:hidden mt-3">
           <div className="flex flex-col gap-6 items-center justify-center">
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-white mb-4 flex items-center justify-center">
+            <div className="flex w-full flex-col items-center text-center">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-white mb-4">
                 {FOOTER_SECTION[4].title}
               </h3>
-              <ul className="list-none p-0 m-0 flex flex-wrap gap-x-4 gap-y-2">
+              <ul className="list-none p-0 m-0 flex flex-wrap justify-center gap-x-5 gap-y-3">
                 {FOOTER_SECTION[4].links.map((link, i) => (
                   <li key={i}>
                     <a
